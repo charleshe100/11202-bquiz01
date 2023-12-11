@@ -1,12 +1,15 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-    <p class="t cent botli">管理者帳號管理</p>
+    <p class="t cent botli">選單管理</p>
     <form method="post" action="./api/edit.php">
         <table width="100%" style="text-align: center">
             <tbody>
                 <tr class="yel">
-                    <td width="45%">帳號</td>
-                    <td width="45%">密碼</td>
+                    <td width="30%">主選單名稱</td>
+                    <td width="30%">選單連結網址</td>
+                    <td width="10%">次選單數</td>
+                    <td width="10%">顯示</td>
                     <td width="10%">刪除</td>
+                    <td></td>
                 </tr>
                 <?php
                 $rows=$DB->all();
@@ -14,13 +17,20 @@
                 ?>
                 <tr>
                     <td>
-                        <input type="text" name="acc[]" style="width:90%" value="<?=$row['acc'];?>">
+                        <input type="text" name="text[]" value="<?=$row['text'];?>">
                     </td>
                     <td>
-                        <input type="password" name="pw[]" value="<?=$row['pw'];?>">
+                        <input type="text" name="href[]" value="<?=$row['href'];?>">
+                    </td>
+                    <td></td>
+                    <td>
+                        <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
                     </td>
                     <td>
                         <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
+                    </td>
+                    <td>
+                        <input type="button" value="編輯次選單"  onclick="op('#cover','#cvr','./modal/submenu.php?table=<?=$do;?>&id=<?=$row['id'];?>')">
                     </td>
                 </tr>
                 <input type="hidden" name="id[]" value="<?=$row['id'];?>">
