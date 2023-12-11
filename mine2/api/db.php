@@ -148,10 +148,4 @@ $Bottom=new DB('bottom');
 $Ad=new DB('ad');
 $Mvim=new DB('mvim');
 $Image=new DB('image');
-$News=new DB('news');
-$Admin=new DB('admin');
-
-if(isset($_GET['do'])){
-    $DB=${ucfirst($_GET['do'])};
-}
 ?>

@@ -17,8 +17,8 @@
     </div>
 </div>
 	<div id="main">
-		<?php 
-			$title=$Title->find(['sh'=>1]);
+		<?php
+		$title=$Total->find(['sh'=>1]);
 		?>
     	<a title="<?=$title['text'];?>" href="index.php">
 			<div class="ti" style="background:url(&#39;./img/<?=$title['img'];?>&#39;); background-size:cover;"></div><!--標題--></a>
@@ -29,21 +29,47 @@
                     	                            <span class="t botli">主選單區</span>
                                                 </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
-                    	<span class="t">進站總人數 : <?=$Total->find(1)['total'];?></span>
+                    	<span class="t">進站總人數 :<span class="t">進站總人數 :<?=$Total->find(1)['total'];?></span></span>
                     </div>
         		</div>
+                <!-- main -->
+				<?php
+				//switch的方法
+				// $do=(isset($_GET['do']))?($_GET['do']):'main'; 簡化後就變成下一行
+				// $do=$_GET['do']??'main';
+				// switch($do){
+				// 	case "login":
+				// 		include "./front/login.php";
+				// 	break;
+				// 	case "news":
+				// 		include "./front/news.php";
+				// 	break;
+				// 	default:
+				// 		include "./front/main.php";
+				// }				
+				
+				//ChartGPT 的方法
+				// $pages = [
+				// 	'login' => './front/login.php',
+				// 	'news' => './front/news.php',
+				// ];				
+				// $do = $_GET['do'] ;				
+				// if (array_key_exists($do, $pages)) {
+				// 	include $pages[$do];
+				// } else {
+				// 	include './front/main.php';
+				// }
 
-				<?php 
+				$do=$_GET['do']??'main';
+				$file="./front/{$do}.php";
+				if(file_exists($file)){
+					include $file;
+				}else{
+					include "./front/main.php";
+				}
 
-					$do=$_GET['do']??'main';
-					$file="./front/{$do}.php";
-					if(file_exists($file)){
-						include $file;
-					}else{
-						include "./front/main.php";	
-					}
-
-					?>
+				?>
+                <!-- main end -->
                 <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
 						$(".sswww").hover(
