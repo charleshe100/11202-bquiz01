@@ -152,7 +152,14 @@ $News=new DB('news');
 $Admin=new DB('admin');
 $Menu=new DB('menu');
 
+$tables=array_keys(get_defined_vars());
+/* dd($tables); 這裡dd是為了檢查上行程式碼是否是所需的陣列*/
 if(isset($_GET['do'])){
-    $DB=${ucfirst($_GET['do'])};
+    $key=ucfirst($_GET['do']);
+    if(in_array($key,$tables)){
+        $DB=$$key;
+    }
+}else{
+    $DB=$Title;
 }
 ?>
