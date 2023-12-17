@@ -38,15 +38,15 @@
             <?php
             if(($now-1)>=1){
                 $prev=$now-1;
-                echo "<a href='?do=$do&p=$prev' style='text-decoration:none'> < </a>";
+                echo "<a href='?do=$do&p=$prev'> < </a>";
             }
             for($i=1;$i<=$pages;$i++){
                 $fontsize=($now==$i)?'24px':'16px';
-                echo "<a href='?do=$do&p=$i' style='text-decoration:none; font-size:$fontsize'> $i </a>";
+                echo "<a href='?do=$do&p=$i' style='font-size:$fontsize'> $i </a>";
             }
             if(($now+1)<=$pages){
                 $next=$now+1;
-                echo "<a href='?do=$do&p=$next' style='text-decoration:none'> > </a>";
+                echo "<a href='?do=$do&p=$next'> > </a>";
             }
             ?>
         <table style="margin-top:40px; width:70%;">
