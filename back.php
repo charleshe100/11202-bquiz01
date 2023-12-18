@@ -102,7 +102,7 @@
 			<script>
 				$(".sswww").hover(
 					function() {
-						$("#alt").html("" + $(this).children(".all").html() + "").css({
+						$("#alt").html("<pre>" + $(this).children(".all").html() + "</pre>").css({
 							"top": $(this).offset().top - 50
 						})
 						$("#alt").show()

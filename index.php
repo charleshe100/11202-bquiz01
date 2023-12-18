@@ -26,8 +26,18 @@
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
-                    	                            <span class="t botli">主選單區</span>
-                                                </div>
+                    	<span class="t botli">主選單區</span>
+						<?php
+						$mainmu=$Menu->all(['sh'=>1,'menu_id'=>0]);
+						foreach($mainmu as $main){
+						?>
+						<a href="<?$main['herf'];?>" style="color: #000; font-size:13px">
+							<div class="mainnu"><?$main['text'];?></div>
+						</a>
+						<?php
+						}
+						?>
+                    </div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 : <?=$Total->find(1)['total'];?></span>
                     </div>
@@ -44,36 +54,34 @@
 					}
 
 					?>
-                <div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
-                    	<script>
-						$(".sswww").hover(
-							function ()
-							{
-								$("#alt").html(""+$(this).children(".all").html()+"").css({"top":$(this).offset().top-50})
-								$("#alt").show()
-							}
-						)
-						$(".sswww").mouseout(
-							function()
-							{
-								$("#alt").hide()
-							}
-						)
-                        </script>
+                
                                  <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 	<!--右邊-->   
                 	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
                 	<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
-						                        <script>
-                        	var nowpage=0,num=0;
+						<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
+						<?php
+						$imgs=$Image->all(['sh'=>1]);
+						foreach($imgs as $idx => $img){
+							?>						
+						<div id="ssaa<?=$idx;?>" class="im cent">
+							<img src="./img/<?=$img['img'];?>" style="width: 150px; height: 103px; border:3px solid orange; margin:3px">
+						</div>
+						<?php
+						}
+						?>
+						<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
+						    <script>
+                        	var nowpage=1,num=<?=$Image->count(['sh'=>1]);?>;
 							function pp(x)
 							{
 								var s,t;
-								if(x==1&&nowpage-1>=0)
+								if(x==1 && (nowpage-1)>=0)
 								{nowpage--;}
-								if(x==2&&(nowpage+1)*3<=num*1+3)
+								if(x==2 && (nowpage+1)<=num*1-3)
 								{nowpage++;}
+
 								$(".im").hide()
 								for(s=0;s<=2;s++)
 								{
@@ -81,7 +89,7 @@
 									$("#ssaa"+t).show()
 								}
 							}
-							pp(1)
+							pp(2)
                         </script>
                     </div>
                 </div>

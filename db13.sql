@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2023-12-11 09:32:37
+-- 產生時間： 2023-12-18 01:13:44
 -- 伺服器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -130,7 +130,14 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`id`, `text`, `href`, `sh`, `menu_id`) VALUES
 (1, '管理登入', 'index.php?do=login', 1, 0),
-(2, '網站首頁', 'index.php', 1, 0);
+(2, '網站首頁', 'index.php', 1, 0),
+(7, '123', 'aaa', 1, 1),
+(8, '456', 'bbb', 1, 1),
+(9, '777', '', 1, 2),
+(10, '888', '', 1, 2),
+(11, '999', '', 1, 2),
+(12, '000', 'ppp', 1, 2),
+(13, '666', 'ooo', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -149,11 +156,11 @@ CREATE TABLE `mvim` (
 --
 
 INSERT INTO `mvim` (`id`, `img`, `sh`) VALUES
-(1, '01C01.gif', 1),
+(1, '01C01.gif', 0),
 (2, '01C02.gif', 1),
-(3, '01C03.gif', 1),
-(4, '01C04.gif', 0),
-(5, '01C05.gif', 0),
+(3, '01C03.gif', 0),
+(4, '01C04.gif', 1),
+(5, '01C05.gif', 1),
 (7, '01C06.gif', 0);
 
 -- --------------------------------------------------------
@@ -295,7 +302,7 @@ ALTER TABLE `image`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `mvim`
