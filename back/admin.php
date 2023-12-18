@@ -9,6 +9,7 @@
                     <td width="10%">刪除</td>
                 </tr>
                 <?php
+
                 $rows=$DB->all();
                 foreach($rows as $row){
                 ?>
@@ -20,7 +21,7 @@
                         <input type="password" name="pw[]" value="<?=$row['pw'];?>">
                     </td>
                     <td>
-                        <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
+                    <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                     </td>
                 </tr>
                 <input type="hidden" name="id[]" value="<?=$row['id'];?>">

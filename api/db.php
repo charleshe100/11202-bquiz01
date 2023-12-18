@@ -152,26 +152,28 @@ $News=new DB('news');
 $Admin=new DB('admin');
 $Menu=new DB('menu');
 
-/* 做法一，有用到 get_defined_vars() 函數
-$tables=array_keys(get_defined_vars());
-dd($tables); 這裡dd是為了檢查上行程式碼是否是所需的陣列
+//$tables=array_keys(get_defined_vars());
+/* dd($tables); */
 if(isset($_GET['do'])){
-    $key=ucfirst($_GET['do']);
-    if(in_array($key,$tables)){
-        $DB=$$key;
-    }
-}else{
-    $DB=$Title;
-}
-*/
-
-// 做法二
-if(isset($_GET['do'])){
+    //$key=ucfirst($_GET['do']);
+    
     if(isset(${ucfirst($_GET['do'])})){
         $DB=${ucfirst($_GET['do'])};
     }
-    
+    /* if(in_array($key,$tables)){
+        $DB=$$key;
+    } */
 }else{
     $DB=$Title;
 }
+
+
+
+if(!isset($_SESSION['visited'])){
+    $Total->q("update `total` set `total`=`total`+1 where `id`=1");
+    $_SESSION['visited']=1;
+
+}
+
+
 ?>

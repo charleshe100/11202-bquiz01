@@ -26,18 +26,36 @@
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">
                     <!--主選單放此-->
-                    	<span class="t botli">主選單區</span>
+						<span class="t botli">主選單區</span>
 						<?php
 						$mainmu=$Menu->all(['sh'=>1,'menu_id'=>0]);
 						foreach($mainmu as $main){
 						?>
-						<a href="<?$main['herf'];?>" style="color: #000; font-size:13px">
-							<div class="mainnu"><?$main['text'];?></div>
+						<div class='mainmu'>
+							<a  href="<?=$main['href'];?>" style="color:#000; font-size:13px; text-decoration:none;"><?=$main['text'];?></a>
+							<?php
+							
+							if($Menu->count(['menu_id'=>$main['id']])>0){
+								echo "<div class='mw'>";
+								$subs=$Menu->all(['menu_id'=>$main['id']]);
+								foreach($subs as $sub){
+									echo "<a href='{$sub['href']}'>";
+									echo "<div class='mainmu2'>";
+									echo $sub['text'];
+									echo "</div>";
+									echo "</a>";
+								}
+								echo "</div>";
+							}
+							?>
+							
+						</div>
+							
 						</a>
 						<?php
 						}
 						?>
-                    </div>
+					</div>
                     <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     	<span class="t">進站總人數 : <?=$Total->find(1)['total'];?></span>
                     </div>
@@ -54,41 +72,56 @@
 					}
 
 					?>
-                
-                                 <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
+
+                    <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 	<!--右邊-->   
-                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
-                	<div style="width:89%; height:480px;" class="dbor">
+					<?php
+					if(isset($_SESSION['login'])){
+					?>
+                	<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;back.php&#39;)">返回管理</button>
+                	<?php
+					}else{
+					?>
+					<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
+                	<?php
+						}
+					?>
+					<div style="width:89%; height:480px;" class="dbor">
                     	<span class="t botli">校園映象區</span>
 						<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
-						<?php
-						$imgs=$Image->all(['sh'=>1]);
-						foreach($imgs as $idx => $img){
-							?>						
-						<div id="ssaa<?=$idx;?>" class="im cent">
-							<img src="./img/<?=$img['img'];?>" style="width: 150px; height: 103px; border:3px solid orange; margin:3px">
+					<?php
+					$imgs=$Image->all(['sh'=>1]);
+
+					foreach($imgs as $idx => $img){
+					?>
+						<div id="ssaa<?=$idx;?>" class='im cent' >
+							<img src="./img/<?=$img['img'];?>" style="width:150px;height:103px;border:3px solid orange;margin:3px">
 						</div>
-						<?php
-						}
-						?>
-						<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
-						    <script>
+					<?php
+					}
+					?>
+					<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
+						<script>
                         	var nowpage=1,num=<?=$Image->count(['sh'=>1]);?>;
+
 							function pp(x)
 							{
 								var s,t;
-								if(x==1 && (nowpage-1)>=0)
+								if(x==1 && nowpage-1>=0)
 								{nowpage--;}
-								if(x==2 && (nowpage+1)<=num*1-3)
+								if(x==2&&(nowpage+1)<=num*1-3)
 								{nowpage++;}
-
+								
 								$(".im").hide()
 								for(s=0;s<=2;s++)
 								{
 									t=s*1+nowpage*1;
 									$("#ssaa"+t).show()
-								}
+
+	 							}
 							}
+
+
 							pp(2)
                         </script>
                     </div>

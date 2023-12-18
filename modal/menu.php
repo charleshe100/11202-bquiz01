@@ -3,7 +3,6 @@
 <form action="./api/add.php" method="post" enctype="multipart/form-data">
 <table>
     <tr>
-    <tr>
         <td>主選單名稱:</td>
         <td><input type="text" name="text" id=""></td>
     </tr>
@@ -11,7 +10,7 @@
         <td>選單連結網址:</td>
         <td><input type="text" name="href" id=""></td>
     </tr>
-    
+
 </table>
 <div>
     <input type="hidden" name="table" value="<?=$_GET['table'];?>">

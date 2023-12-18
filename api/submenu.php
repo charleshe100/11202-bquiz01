@@ -9,12 +9,13 @@ if(isset($_POST['id'])){
             $row['text']=$_POST['text'][$idx];
             $row['href']=$_POST['href'][$idx];
             $Menu->save($row);
-        }        
+        }
     }
 }
 
+
 if(isset($_POST['add_text'])){
-    foreach($_POST['add_text'] as $idx => $text){
+    foreach($_POST['add_text'] as $idx =>$text){
         if($text!=""){
             $data=[];
             $data['text']=$text;

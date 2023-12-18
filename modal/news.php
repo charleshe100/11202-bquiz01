@@ -5,7 +5,7 @@
     <tr>
         <td>最新消息資料</td>
         <td>
-            <textarea type="text" name="text" style="width: 300px;height:150px"></textarea>
+            <textarea type="text" name="text" style="width:300px;height:150px"></textarea>
         </td>
     </tr>
 </table>
