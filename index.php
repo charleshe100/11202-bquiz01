@@ -72,8 +72,13 @@
 					}
 
 					?>
+<<<<<<< HEAD
 
                     <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
+=======
+                
+                                 <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
+>>>>>>> 379a4870d711aea31a4964303763e3d9ea73fc68
                 	<!--右邊-->   
 					<?php
 					if(isset($_SESSION['login'])){

@@ -160,9 +160,13 @@ if(isset($_GET['do'])){
     if(isset(${ucfirst($_GET['do'])})){
         $DB=${ucfirst($_GET['do'])};
     }
+<<<<<<< HEAD
     /* if(in_array($key,$tables)){
         $DB=$$key;
     } */
+=======
+    
+>>>>>>> 379a4870d711aea31a4964303763e3d9ea73fc68
 }else{
     $DB=$Title;
 }
